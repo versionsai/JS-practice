@@ -2,10 +2,11 @@
   <div>
     <common-card title="累计订单量" value="2157,212,21">
       <template>
-        <div
+        <!-- <div
           id="total_orders_chart"
           :style="{ height: '100%', width: '100%' }"
-        ></div>
+        ></div> -->
+        <v-chart :options="getOptions()"></v-chart>
       </template>
       <template v-slot:footer>
         <div>
@@ -28,14 +29,9 @@ export default {
   },
   watch: {},
   computed: {},
-  methods: {},
-  created () {},
-  mounted () {
-    const that = this
-    that.$nextTick(() => {
-      const chartDom = document.getElementById('total_orders_chart')
-      const chart = this.$echarts.init(chartDom)
-      chart.setOption({
+  methods: {
+    getOptions () {
+      return {
         xAxis: {
           type: 'category',
           show: false,
@@ -86,9 +82,11 @@ export default {
           right: 0,
           left: 0
         }
-      })
-    })
-  }
+      }
+    }
+  },
+  created () {},
+  mounted () {}
 }
 </script>
 <style lang="scss" scoped></style>

@@ -1,5 +1,5 @@
 <template>
-  <v-chart :option="data" />
+  <div>111</div>
 </template>
 
 <script>
@@ -8,20 +8,7 @@ export default {
   components: {},
   provide: {},
   data () {
-    return {
-      data: {
-        xAxis: {
-          type: 'category'
-        },
-        yAxis: {},
-        series: [
-          {
-            type: 'line',
-            data: [100, 200, 300, 400]
-          }
-        ]
-      }
-    }
+    return {}
   }
 }
 </script>
