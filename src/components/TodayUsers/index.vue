@@ -2,10 +2,11 @@
   <div>
     <common-card title="今日交易用户量" value="215,210,30">
       <template>
-        <div
+        <!-- <div
           id="today_users_chart"
           :style="{ height: '100%', width: '100%' }"
-        ></div>
+        ></div> -->
+        <v-chart :options="getOptions()"></v-chart>
       </template>
       <template v-slot:footer>
         <div>
@@ -28,14 +29,9 @@ export default {
   },
   watch: {},
   computed: {},
-  methods: {},
-  created () {},
-  mounted () {
-    const that = this
-    that.$nextTick(() => {
-      const chartDom = document.getElementById('today_users_chart')
-      const chart = this.$echarts.init(chartDom)
-      chart.setOption({
+  methods: {
+    getOptions () {
+      return {
         color: ['#3398DB'],
         xAxis: {
           type: 'category',
@@ -111,9 +107,11 @@ export default {
           right: 0,
           left: 0
         }
-      })
-    })
-  }
+      }
+    }
+  },
+  created () {},
+  mounted () {}
 }
 </script>
 <style lang="scss" scoped></style>

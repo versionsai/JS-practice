@@ -2,10 +2,11 @@
   <div>
     <common-card title="累计用户数" value="1,870,30">
       <template>
-        <div
+        <!-- <div
           id="total_users_chart"
           :style="{ height: '100%', width: '100%' }"
-        ></div>
+        ></div> -->
+        <v-chart :options="getOptions()"></v-chart>
       </template>
       <template v-slot:footer>
         <div class="total_users_footer">
@@ -32,14 +33,9 @@ export default {
   },
   watch: {},
   computed: {},
-  methods: {},
-  created () {},
-  mounted () {
-    const that = this
-    that.$nextTick(() => {
-      const chartDom = document.getElementById('total_users_chart')
-      const chart = this.$echarts.init(chartDom)
-      chart.setOption({
+  methods: {
+    getOptions () {
+      return {
         grid: {
           top: 0,
           bottom: 0,
@@ -119,9 +115,11 @@ export default {
             }
           }
         ]
-      })
-    })
-  }
+      }
+    }
+  },
+  created () {},
+  mounted () {}
 }
 </script>
 
